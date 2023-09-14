@@ -15,7 +15,7 @@ resource "aws_instance" "ec2"  {
     connection {
       host = self.public_ip
       user = "centos"
-      password = "Devops321"
+      password = "DevOps321"
     }
 
     inline = [
