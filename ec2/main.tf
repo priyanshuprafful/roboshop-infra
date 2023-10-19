@@ -77,6 +77,12 @@ resource "aws_iam_policy" "ssm-policy" {
           "ssm:GetParameter"
         ],
         "Resource": "arn:aws:ssm:us-east-1:529080510656:parameter/${var.env}.${var.component}*"
+      },
+      {
+        "Sid": "VisualEditor1",
+        "Effect": "Allow",
+        "Action": "ssm:DescribeParameters",
+        "Resource": "*"
       }
     ]
   })
@@ -102,7 +108,7 @@ resource "aws_iam_role" "role" {
 resource "aws_iam_instance_profile" "profile" {
   name = "${var.env}-${var.component}-role"
   role = aws_iam_role.role.name
-}
+}   
 
 resource "aws_iam_role_policy_attachment" "policy-attach"{
   role = aws_iam_role.role.name
