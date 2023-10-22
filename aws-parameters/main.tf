@@ -10,7 +10,7 @@ resource "aws_ssm_parameter" "secret" {
   count = length(var.secrets)
   name = var.secrets[count.index].name
   type = var.secrets[count.index].type
-  value = var.parameters[count.index].value
+  value = var.secrets[count.index].value
 }
 
 variable "parameters" {}
