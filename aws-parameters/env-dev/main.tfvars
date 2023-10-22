@@ -28,6 +28,6 @@ secrets = [
   {name = "dev.payment.amqp_user", value = "roboshop" , type = "SecureString"},
   {name = "dev.payment.amqp_pass", value = "roboshop123" , type = "SecureString"},
   {name = "dev.rabbitmq.amqp_user", value = "roboshop" , type = "SecureString"},
-  {name = "dev.rabbitmq.amqp_pass", value = "roboshop123" , type = "SecureString"},
+  {name = "dev.rabbitmq.amqp_pass", value = "roboshop123" , type = "SecureString"}
 
 ]
