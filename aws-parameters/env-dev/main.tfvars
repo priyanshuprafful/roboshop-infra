@@ -22,3 +22,7 @@ parameters = [
   {name = "dev.cart.catalogue_port", value = "8080" , type = "String"}
 ]
 
+### THIS IS NOT GOING TO BE THE PRACTICE IN COMPANIES , WE SHOULD NOT KEEP PASSWORDS IN GIT REPOS
+secrets = [
+  {name = "test", value = "IamPassword" , type = "SecureString"}
+]
