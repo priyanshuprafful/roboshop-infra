@@ -7,7 +7,7 @@ parameters = [
   {name = "dev.frontend.payment_url", value = "http://payment-dev.saraldevops.online:8080/" , type = "String"},
   {name = "dev.user.mongo", value = "true" , type = "String"},
   {name = "dev.user.redis_host", value = "redis-dev.saraldevops.online" , type = "String"},
-  {name = "dev.user.mongo_url", value = ' "mongodb://mongodb-dev.saraldevops.online:27017/users " ' , type = "String"},
+  {name = "dev.user.mongo_url", value = '"mongodb://mongodb-dev.saraldevops.online:27017/users"' , type = "String"},
   {name = "dev.shipping.cart_endpoint", value = "cart-dev.saraldevops.online:8080" , type = "String"},
   {name = "dev.shipping.db_host", value = "mysql-dev.saraldevops.online" , type = "String"},
   {name = "dev.payment.cart_host", value = "cart-dev.saraldevops.online" , type = "String"},
