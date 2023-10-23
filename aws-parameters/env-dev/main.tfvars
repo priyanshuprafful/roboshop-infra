@@ -13,7 +13,7 @@ parameters = [
   {name = "dev.payment.cart_host", value = "cart-dev.saraldevops.online" , type = "String"},
   {name = "dev.payment.cart_port", value = "8080" , type = "String"},
   {name = "dev.payment.user_host", value = "user-dev.saraldevops.online" , type = "String"},
-  {name = "dev.payment.user_port", value = "8080/" , type = "String"},
+  {name = "dev.payment.user_port", value = "8080" , type = "String"},
   {name = "dev.payment.amqp_host", value = "rabbitmq-dev.saraldevops.online" , type = "String"},
   {name = "dev.catalogue.mongo", value = "true" , type = "String"},
   {name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.saraldevops.online:27017/catalogue" , type = "String"},
