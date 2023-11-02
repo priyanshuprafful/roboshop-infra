@@ -19,7 +19,10 @@ parameters = [
   {name = "dev.catalogue.mongo_url", value = "mongodb://mongodb-dev.saraldevops.online:27017/catalogue" , type = "String"},
   {name = "dev.cart.redis_host", value = "redis-dev.saraldevops.online" , type = "String"},
   {name = "dev.cart.catalogue_host", value = "catalogue-dev.saraldevops.online" , type = "String"},
-  {name = "dev.cart.catalogue_port", value = "8080" , type = "String"}
+  {name = "dev.cart.catalogue_port", value = "8080" , type = "String"},
+  {name = "dev.mysql.mysql_url" , value = "mysql-dev.saraldevops.online" , type = "String"},
+  {name = "dev.mongodb.mongodb_url" , value = "mongodb-dev.saraldevops.online" , type = "String"}
+
 ]
 
 ### THIS IS NOT GOING TO BE THE PRACTICE IN COMPANIES , WE SHOULD NOT KEEP PASSWORDS IN GIT REPOS
