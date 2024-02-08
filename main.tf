@@ -12,6 +12,6 @@ module "vpc" {
   source = "git::https://github.com/priyanshuprafful/tf-module-vpc.git"
 
   env = var.env
-  for_each = var.vpc
+  for_each = var.vpc_cidr
   vpc_cidr = each.value["vpc_cidr"]
 } 
