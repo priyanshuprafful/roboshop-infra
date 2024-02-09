@@ -20,9 +20,9 @@ module "vpc" {
 
 }
 
-output "vpc" {
-  value = module.vpc
-}
+#output "vpc" {
+#  value = module.vpc
+#}
 
 # in order to access these variables we have to define them in tf-module-vpc / vars.tf file
 # that is why there vpc_cidr , public_subnets , env are defined
