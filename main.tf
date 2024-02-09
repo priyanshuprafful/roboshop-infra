@@ -15,5 +15,9 @@ module "vpc" {
   tags = var.tags
   for_each = var.vpc
   vpc_cidr = each.value["vpc_cidr"]
+  public_subnets=each.value["public_subnets"]
 
-} 
+}
+
+# in order to access these variables we have to define them in tf-module-vpc / vars.tf file
+# that is why there vpc_cidr , public_subnets , env are defined
