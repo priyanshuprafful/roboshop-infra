@@ -25,7 +25,7 @@ vpc = {
 
       }
       web-az2 = {
-        name = "public-az2"
+        name = "web-az2"
         cidr_block = "10.0.3.0/24"
         availability_zone = "us-east-1b"
       }
