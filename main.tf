@@ -22,24 +22,24 @@ module "vpc" {
 
 }
 
-module "docdb" {
-
-  source = "git::https://github.com/priyanshuprafful/tf-module-docdb.git"
-
-  env = var.env
-  tags = var.tags
-  for_each = var.docdb
-  engine = each.value["engine"]
-  engine_version = each.value["engine_version"]
-  backup_retention_period = each.value["backup_retention_period"]
-  preferred_backup_window = each.value["preferred_backup_window"]
-  skip_final_snapshot = each.value["skip_final_snapshot"]
-  subnet_ids =
-
-}
-#output "vpc" {
-#  value = module.vpc
+#module "docdb" {
+#
+#  source = "git::https://github.com/priyanshuprafful/tf-module-docdb.git"
+#
+#  env = var.env
+#  tags = var.tags
+#  for_each = var.docdb
+#  engine = each.value["engine"]
+#  engine_version = each.value["engine_version"]
+#  backup_retention_period = each.value["backup_retention_period"]
+#  preferred_backup_window = each.value["preferred_backup_window"]
+#  skip_final_snapshot = each.value["skip_final_snapshot"]
+#  subnet_ids =
+#
 #}
+output "vpc" {
+  value = local.private_subnet_ids
+}
 
 # in order to access these variables we have to define them in tf-module-vpc / vars.tf file
 # that is why there vpc_cidr , public_subnets , env are defined
