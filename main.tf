@@ -38,7 +38,7 @@ module "vpc" {
 #
 #}
 output "vpc" {
-  value = local.private_subnet_ids
+  value = local.db_subnet_ids
 }
 
 # in order to access these variables we have to define them in tf-module-vpc / vars.tf file
