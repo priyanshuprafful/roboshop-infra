@@ -58,6 +58,28 @@ module "rds" {
   no_of_instances         = each.value["no_of_instances"]
 
 }
+
+
+module "elasticache" {
+
+  source = "git::https://github.com/priyanshuprafful/tf-module-elasticache.git"
+
+  env = var.env
+  tags = var.tags
+  subnet_ids = local.db_subnet_ids
+
+  for_each                = var.elasticache
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
+  num_cache_nodes         = each.value["num_cache_nodes"]
+  node_type               = each.value["node_type"]
+  port                    = each.value["port"]
+#  backup_retention_period = each.value["backup_retention_period"]
+#  preferred_backup_window = each.value["preferred_backup_window"]
+#  instance_class          = each.value["instance_class"]
+#  no_of_instances         = each.value["no_of_instances"]
+
+}
 #output "vpc" {
 #  value = local.db_subnet_ids
 #}
