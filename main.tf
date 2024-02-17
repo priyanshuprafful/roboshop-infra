@@ -49,9 +49,9 @@ module "rds" {
   tags = var.tags
   subnet_ids = local.db_subnet_ids
 
-  for_each = var.rds
-  engine = each.value["engine"]
-  engine_version = each.value["engine_version"]
+  for_each                = var.rds
+  engine                  = each.value["engine"]
+  engine_version          = each.value["engine_version"]
   backup_retention_period = each.value["backup_retention_period"]
   preferred_backup_window = each.value["preferred_backup_window"]
   instance_class          = each.value["instance_class"]
