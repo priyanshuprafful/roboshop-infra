@@ -121,3 +121,12 @@ alb = {
 
   }
 }
+
+# creation of apps server
+
+app = {
+  catalogue = {
+    component = "catalogue"
+    instance_type = "t3.nano"
+  }
+}

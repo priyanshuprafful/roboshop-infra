@@ -91,19 +91,19 @@ module "vpc" {
 #
 #}
 
-module "alb" {
-  source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
-  env = var.env
-  tags = var.tags
-
-  for_each = var.alb
-  name = each.value["name"]
-  internal = each.value["internal"]
-  load_balancer_type = each.value["load_balancer_type"]
-  subnets = lookup(local.subnet_ids , each.value["subnet_name"] , null )
-
-
-}
+#module "alb" {
+#  source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
+#  env = var.env
+#  tags = var.tags
+#
+#  for_each = var.alb
+#  name = each.value["name"]
+#  internal = each.value["internal"]
+#  load_balancer_type = each.value["load_balancer_type"]
+#  subnets = lookup(local.subnet_ids , each.value["subnet_name"] , null )
+#
+#
+#}
 
 #output "vpc" {
 #  value = local.db_subnet_ids
@@ -114,3 +114,13 @@ module "alb" {
 
 # in order to access these variables we have to define them in tf-module-vpc / vars.tf file
 # that is why there vpc_cidr , public_subnets , env are defined
+
+module "app" {
+  source = "git::https://github.com/priyanshuprafful/tf-module-app.git"
+
+  env = var.env
+  tags = var.tags
+  for_each = var.app
+  component = each.value["component"]
+  instance_type = each.value["instance_type"]
+}
