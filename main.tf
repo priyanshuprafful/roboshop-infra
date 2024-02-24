@@ -91,19 +91,19 @@ module "vpc" {
 #
 #}
 
-#module "alb" {
-#  source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
-#  env = var.env
-#  tags = var.tags
-#
-#  for_each = var.alb
-#  name = each.value["name"]
-#  internal = each.value["internal"]
-#  load_balancer_type = each.value["load_balancer_type"]
-#  subnets = lookup(local.subnet_ids , each.value["subnet_name"] , null )
-#
-#
-#}
+module "alb" {
+  source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
+  env = var.env
+  tags = var.tags
+
+  for_each = var.alb
+  name = each.value["name"]
+  internal = each.value["internal"]
+  load_balancer_type = each.value["load_balancer_type"]
+  subnets = lookup(local.subnet_ids , each.value["subnet_name"] , null )
+
+
+}
 
 #output "vpc" {
 #  value = local.db_subnet_ids
@@ -123,4 +123,8 @@ module "app" {
   for_each = var.app
   component = each.value["component"]
   instance_type = each.value["instance_type"]
+  desired_capacity = each.value["desired_capacity"]
+  max_size = each.value["max_size"]
+  min_size = each.value["min_size"]
+  subnets = lookup(local.subnet_ids , each.value["subnet_name"] , null )
 }
