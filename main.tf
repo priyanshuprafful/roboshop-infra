@@ -96,6 +96,7 @@ module "alb" {
   env = var.env
   tags = var.tags
 
+
   for_each = var.alb
   name = each.value["name"]
   internal = each.value["internal"]
@@ -120,6 +121,9 @@ module "app" {
 
   env = var.env
   tags = var.tags
+  vpc_id = module.vpc["main"].vpc_id
+  bastion_cidr = var.bastion_cidr
+
   for_each = var.app
   component = each.value["component"]
   instance_type = each.value["instance_type"]
