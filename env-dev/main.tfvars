@@ -128,7 +128,7 @@ alb = {
 app = {
   catalogue = {
     component = "catalogue"
-    instance_type = "t3.nano"
+    instance_type = "t3.micro"
     desired_capacity = 1
     max_size = 4
     min_size = 1
@@ -136,7 +136,7 @@ app = {
   }
   cart = {
     component = "cart"
-    instance_type = "t3.nano"
+    instance_type = "t3.micro"
     desired_capacity = 1
     max_size = 4
     min_size = 1
@@ -144,7 +144,7 @@ app = {
   }
   user = {
     component = "user"
-    instance_type = "t3.nano"
+    instance_type = "t3.micro"
     desired_capacity = 1
     max_size = 4
     min_size = 1
@@ -168,7 +168,7 @@ app = {
   }
   frontend = {
     component = "frontend"
-    instance_type = "t3.nano"
+    instance_type = "t3.micro"
     desired_capacity = 1
     max_size = 4
     min_size = 1
