@@ -95,6 +95,8 @@ module "alb" {
   source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
   env = var.env
   tags = var.tags
+  vpc_id = module.vpc["main"].vpc_id
+  allow_cidr = each.value["allow_cidr"]
 
 
   for_each = var.alb
