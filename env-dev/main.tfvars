@@ -139,6 +139,7 @@ app = {
     port        = 8080
     allow_app_to = "app" # here we are defining which subnet to allow our app
     alb           = "private" #  load balancer that this app going to use
+    listener_priority = 10
   }
   cart = {
     component = "cart"
@@ -150,6 +151,7 @@ app = {
     port        = 8080
     allow_app_to = "app"
     alb           = "private"
+    listener_priority = 11
   }
   user = {
     component = "user"
@@ -161,6 +163,7 @@ app = {
     port        = 8080
     allow_app_to = "app"
     alb           = "private"
+    listener_priority = 12
   }
   shipping = {
     component = "shipping"
@@ -172,6 +175,7 @@ app = {
     port        = 8080
     allow_app_to = "app"
     alb           = "private"
+    listener_priority = 13
   }
   payment = {
     component = "payment"
@@ -183,6 +187,7 @@ app = {
     port        = 8080
     allow_app_to = "app"
     alb           = "private"
+    listener_priority = 14
   }
   frontend = {
     component = "frontend"
@@ -194,7 +199,7 @@ app = {
     port        = 80
     allow_app_to = "public"
     alb           = "public" # it is different from subnet , it is public load balancer that we are giving access to
-
+    listener_priority = 10
   }
 
 }
