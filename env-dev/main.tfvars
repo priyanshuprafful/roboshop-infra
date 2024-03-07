@@ -1,5 +1,6 @@
 env = "dev"
 bastion_cidr = [ "172.31.83.101/32" ]
+dns_domain = "saraldevops.online"
 
 
 vpc = {
@@ -137,6 +138,7 @@ app = {
     subnet_name = "app"
     port        = 8080
     allow_app_to = "app" # here we are defining which subnet to allow our app
+    alb           = "private" #  load balancer that this app going to use
   }
   cart = {
     component = "cart"
@@ -147,6 +149,7 @@ app = {
     subnet_name = "app"
     port        = 8080
     allow_app_to = "app"
+    alb           = "private"
   }
   user = {
     component = "user"
@@ -157,6 +160,7 @@ app = {
     subnet_name = "app"
     port        = 8080
     allow_app_to = "app"
+    alb           = "private"
   }
   shipping = {
     component = "shipping"
@@ -167,6 +171,7 @@ app = {
     subnet_name = "app"
     port        = 8080
     allow_app_to = "app"
+    alb           = "private"
   }
   payment = {
     component = "payment"
@@ -177,6 +182,7 @@ app = {
     subnet_name = "app"
     port        = 8080
     allow_app_to = "app"
+    alb           = "private"
   }
   frontend = {
     component = "frontend"
@@ -187,6 +193,7 @@ app = {
     subnet_name = "web"
     port        = 80
     allow_app_to = "public"
+    alb           = "public" # it is different from subnet , it is public load balancer that we are giving access to
 
   }
 
