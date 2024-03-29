@@ -148,4 +148,7 @@ module "app" {
 
 }
 
+output "redis" {
+  value = module.elasticache
+}
 # each.value ["alb"] actually alb can be public or private that is why we used like that
