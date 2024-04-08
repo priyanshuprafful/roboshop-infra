@@ -141,6 +141,7 @@ app = {
     allow_app_to = "app" # here we are defining which subnet to allow our app
     alb           = "private" #  load balancer that this app going to use
     listener_priority = 10
+    parameters = ["docdb"]
   }
   cart = {
     component = "cart"
@@ -153,6 +154,7 @@ app = {
     allow_app_to = "app"
     alb           = "private"
     listener_priority = 11
+    parameters = ["elasticache"]
   }
   user = {
     component = "user"
@@ -165,6 +167,7 @@ app = {
     allow_app_to = "app"
     alb           = "private"
     listener_priority = 12
+    parameters = ["docdb" , "elasticache"]
   }
   shipping = {
     component = "shipping"
@@ -177,6 +180,7 @@ app = {
     allow_app_to = "app"
     alb           = "private"
     listener_priority = 13
+    parameters = []
   }
   payment = {
     component = "payment"
@@ -189,6 +193,7 @@ app = {
     allow_app_to = "app"
     alb           = "private"
     listener_priority = 14
+    parameters = []
   }
   frontend = {
     component = "frontend"
@@ -201,6 +206,7 @@ app = {
     allow_app_to = "public"
     alb           = "public" # it is different from subnet , it is public load balancer that we are giving access to
     listener_priority = 10
+    parameters = []
   }
 
 }
