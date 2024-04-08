@@ -122,6 +122,10 @@ module "alb" {
 # that is why there vpc_cidr , public_subnets , env are defined
 
 module "app" {
+
+
+  depends_on = [module.alb , module.docdb , module.elasticache , module.rds , module.rabbitmq]
+
   source = "git::https://github.com/priyanshuprafful/tf-module-app.git"
 
   env = var.env
