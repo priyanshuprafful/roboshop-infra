@@ -94,6 +94,7 @@ elasticache = {
     num_cache_nodes = 1
     node_type = "cache.t3.micro"
     port      =  6379
+    allow_subnets = "app"
   }
 }
 

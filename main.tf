@@ -70,6 +70,7 @@ module "elasticache" {
   env = var.env
   tags = var.tags
   subnet_ids = local.db_subnet_ids
+  vpc_id              = module.vpc["main"].vpc_id
 
   for_each                = var.elasticache
   engine                  = each.value["engine"]
@@ -77,6 +78,7 @@ module "elasticache" {
   num_cache_nodes         = each.value["num_cache_nodes"]
   node_type               = each.value["node_type"]
   port                    = each.value["port"]
+  allow_subnets       = lookup(local.subnet_cidr, each.value["allow_subnets"] , null)
 #  backup_retention_period = each.value["backup_retention_period"]
 #  preferred_backup_window = each.value["preferred_backup_window"]
 #  instance_class          = each.value["instance_class"]
