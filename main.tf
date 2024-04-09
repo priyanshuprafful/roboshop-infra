@@ -182,8 +182,8 @@ data "aws_ami" "ami" {
 
 }
 
-resource "aws_spot_instance_request" "load_runner" {
-  ami = data.aws_ami.ami.id
+resource "aws_spot_instance_request" "load-runner" {
+  ami = data.aws_ami.ami.id 
   instance_type = "t3.medium"
   wait_for_fulfillment = true
   vpc_security_group_ids = ["allow-all"] # our created security id in default vpc
@@ -196,6 +196,6 @@ resource "aws_spot_instance_request" "load_runner" {
 
 resource "aws_ec2_tag" "name_tag" {
   key         = "Name"
-  resource_id = aws_spot_instance_request.load_runner.spot_instance_id
-  value       = "Load_runner"
+  resource_id = aws_spot_instance_request.load-runner.spot_instance_id
+  value       = "Load-runner"
 }
