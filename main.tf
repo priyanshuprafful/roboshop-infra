@@ -186,7 +186,7 @@ resource "aws_spot_instance_request" "load-runner" {
   ami = data.aws_ami.ami.id
   instance_type = "t3.medium"
   wait_for_fulfillment = true
-  vpc_security_group_ids = ["allow-all"] # our created security id in default vpc
+  vpc_security_group_ids = ["sg-017c17be83f3872d4"] # our created security id in default vpc allow-all
 
   tags = merge(
     var.tags,
