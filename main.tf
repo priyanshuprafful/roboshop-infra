@@ -168,7 +168,34 @@ module "app" {
 
 }
 
-output "redis" {
-  value = module.elasticache
-}
+#output "redis" {
+#  value = module.elasticache
+#}
 # each.value ["alb"] actually alb can be public or private that is why we used like that
+
+# Load Runner creation with spot instance
+
+data "aws_ami" "ami" {
+  most_recent = true
+  name_regex = "devops-practice-with-ansible-my-local-image"
+  owners = ["self"]
+
+}
+
+resource "aws_spot_instance_request" "load_runner" {
+  ami = data.aws_ami.ami.id
+  instance_type = "t3.medium"
+  wait_for_fulfillment = true
+  vpc_security_group_ids = ["allow-all"] # our created security id in default vpc
+
+  tags = merge(
+    var.tags ,
+    { Name = "load-runner"}
+  )
+}
+
+resource "aws_ec2_tag" "name_tag" {
+  key         = "Name"
+  resource_id = aws_spot_instance_request.load_runner.spot_instance_id
+  value       = "Load_runner"
+}
