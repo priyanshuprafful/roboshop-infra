@@ -146,6 +146,7 @@ module "app" {
   tags = var.tags
   vpc_id = module.vpc["main"].vpc_id
   bastion_cidr = var.bastion_cidr
+  monitoring_nodes = var.monitoring_nodes
   dns_domain = var.dns_domain
 
   for_each = var.app

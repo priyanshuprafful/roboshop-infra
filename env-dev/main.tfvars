@@ -1,6 +1,8 @@
 env = "dev"
 bastion_cidr = [ "172.31.83.101/32" ]
+monitoring_nodes = ["172.31.35.218/32"]
 dns_domain = "saraldevops.online"
+
 
 
 vpc = {
