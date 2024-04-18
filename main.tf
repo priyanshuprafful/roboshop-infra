@@ -206,6 +206,7 @@ resource "null_resource" "load-gen" {
       password = data.aws_ssm_parameter.ssh_pass.value
     }
     inline = [
+      "set-hostname load-runner" , 
       "curl -s -L https://get.docker.com | bash",
       "systemctl enable docker" ,
       "systemctl start docker" ,
