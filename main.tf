@@ -213,4 +213,4 @@ resource "aws_ec2_tag" "name_tag" {
 #      "docker pull robotshop/rs-load"
 #    ]
 #  }
-}
+#}
