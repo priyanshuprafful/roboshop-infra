@@ -173,14 +173,12 @@ module "app" {
 #}
 # each.value ["alb"] actually alb can be public or private that is why we used like that
 
-# Load Runner creation with spot instance
 
-data "aws_ami" "ami" {
-  most_recent = true
-  name_regex = "devops-practice-with-ansible-my-local-image"
-  owners = ["self"]
 
-}
+
+
+## Load Runner creation with spot instance
+
 
 resource "aws_spot_instance_request" "load-runner" {
   ami = data.aws_ami.ami.id
@@ -198,4 +196,20 @@ resource "aws_ec2_tag" "name_tag" {
   key         = "Name"
   resource_id = aws_spot_instance_request.load-runner.spot_instance_id
   value       = "Load-runner"
+}
+
+resource "null_resource" "load-gen" {
+  provisioner "remote-exec" {
+    connection {
+      host = aws_spot_instance_request.load-runner.public_ip
+      user = "root"
+      password = data.aws_ssm_parameter.ssh_pass.value
+    }
+    inline = [
+      "curl -s -L https://get.docker.com | bash",
+      "systemctl enable docker" ,
+      "systemctl start docker" ,
+      "docker pull robotshop/rs-load"
+    ]
+  }
 }
