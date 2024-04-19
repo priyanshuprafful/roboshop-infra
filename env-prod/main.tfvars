@@ -177,7 +177,7 @@ app = {
   }
   shipping = {
     component = "shipping"
-    instance_type = "t3.small" # actually requires more memory and hence going for micro , we will change this ,  also later
+    instance_type = "t3.medium" # actually requires more memory and hence going for micro , we will change this ,  also later
     desired_capacity = 2
     max_size = 10
     min_size = 2
