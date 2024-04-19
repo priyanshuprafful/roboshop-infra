@@ -213,10 +213,11 @@ resource "null_resource" "load-gen" {
     }
     inline = [
       "set-hostname load-runner",
-      "curl -s -L https://get.docker.com | bash",
-      "systemctl enable docker",
-      "systemctl start docker",
-      "docker pull robotshop/rs-load"
+      "labauto roboshop-load-gen"
+#      "curl -s -L https://get.docker.com | bash",
+#      "systemctl enable docker",
+#      "systemctl start docker",
+#      "docker pull robotshop/rs-load"
     ]
   }
 }
