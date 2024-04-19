@@ -199,6 +199,12 @@ resource "aws_ec2_tag" "name_tag" {
 }
 
 resource "null_resource" "load-gen" {
+
+  triggers = {
+    id = aws_spot_instance_request.load-runner.public_ip
+  }
+# triggers is used to trigger provisioner and if there is no change in value then it is not going to execute provisioner
+  # and if there is a change in id ( triggers ) then it will execute that value .
   provisioner "remote-exec" {
     connection {
       host = aws_spot_instance_request.load-runner.public_ip
@@ -206,10 +212,10 @@ resource "null_resource" "load-gen" {
       password = data.aws_ssm_parameter.ssh_pass.value
     }
     inline = [
-      "set-hostname load-runner" ,
+      "set-hostname load-runner",
       "curl -s -L https://get.docker.com | bash",
-      "systemctl enable docker" ,
-      "systemctl start docker" ,
+      "systemctl enable docker",
+      "systemctl start docker",
       "docker pull robotshop/rs-load"
     ]
   }
