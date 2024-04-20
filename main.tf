@@ -179,12 +179,55 @@ module "app" {
 
 ## Load Runner creation with spot instance
 
+#
+#resource "aws_spot_instance_request" "load-runner" {
+#  ami = data.aws_ami.ami.id
+#  instance_type = "t3.medium"
+#  wait_for_fulfillment = true
+#  vpc_security_group_ids = ["sg-017c17be83f3872d4"] # our created security id in default vpc allow-all
+#
+#  tags = merge(
+#    var.tags,
+#    { Name = "load-runner" }
+#  )
+#}
+#
+#resource "aws_ec2_tag" "name_tag" {
+#  key         = "Name"
+#  resource_id = aws_spot_instance_request.load-runner.spot_instance_id
+#  value       = "Load-runner"
+#}
+#
+#resource "null_resource" "load-gen" {
+#
+#  triggers = {
+#    id = aws_spot_instance_request.load-runner.public_ip
+#  }
+## triggers is used to trigger provisioner and if there is no change in value then it is not going to execute provisioner
+#  # and if there is a change in id ( triggers ) then it will execute that value .
+#  provisioner "remote-exec" {
+#    connection {
+#      host = aws_spot_instance_request.load-runner.public_ip
+#      user = "root"
+#      password = data.aws_ssm_parameter.ssh_pass.value
+#    }
+#    inline = [
+#      "set-hostname load-runner",
+#      "curl -s -L https://get.docker.com | bash",
+#      "systemctl enable docker",
+#      "systemctl start docker",
+#      "docker pull robotshop/rs-load"
+#    ]
+#  }
+#}
 
+
+### Load Runner
 resource "aws_spot_instance_request" "load-runner" {
-  ami = data.aws_ami.ami.id
-  instance_type = "t3.medium"
-  wait_for_fulfillment = true
-  vpc_security_group_ids = ["sg-017c17be83f3872d4"] # our created security id in default vpc allow-all
+  ami                    = data.aws_ami.ami.id
+  instance_type          = "t3.medium"
+  wait_for_fulfillment   = true
+  vpc_security_group_ids = ["sg-017c17be83f3872d4"]
 
   tags = merge(
     var.tags,
@@ -192,27 +235,23 @@ resource "aws_spot_instance_request" "load-runner" {
   )
 }
 
-resource "aws_ec2_tag" "name_tag" {
+resource "aws_ec2_tag" "name-tag" {
   key         = "Name"
   resource_id = aws_spot_instance_request.load-runner.spot_instance_id
-  value       = "Load-runner"
+  value       = "load-runner"
 }
 
 resource "null_resource" "load-gen" {
-
   triggers = {
-    id = aws_spot_instance_request.load-runner.public_ip
+    abc = aws_spot_instance_request.load-runner.public_ip
   }
-# triggers is used to trigger provisioner and if there is no change in value then it is not going to execute provisioner
-  # and if there is a change in id ( triggers ) then it will execute that value .
   provisioner "remote-exec" {
     connection {
-      host = aws_spot_instance_request.load-runner.public_ip
-      user = "root"
+      host     = aws_spot_instance_request.load-runner.public_ip
+      user     = "root"
       password = data.aws_ssm_parameter.ssh_pass.value
     }
     inline = [
-      "set-hostname load-runner",
       "curl -s -L https://get.docker.com | bash",
       "systemctl enable docker",
       "systemctl start docker",
