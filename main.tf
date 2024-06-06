@@ -21,7 +21,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 
 }
-
+/*
 module "docdb" {
 
   source = "git::https://github.com/priyanshuprafful/tf-module-docdb.git"
@@ -107,6 +107,8 @@ module "rabbitmq" {
 
 
 }
+
+*/
 
 module "alb" {
   source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
@@ -221,7 +223,7 @@ module "app" {
 #  }
 #}
 
-
+/*
 ### Load Runner
 resource "aws_spot_instance_request" "load-runner" {
   ami                    = data.aws_ami.ami.id
@@ -260,3 +262,5 @@ resource "null_resource" "load-gen" {
     ]
   }
 }
+
+*/
