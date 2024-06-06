@@ -140,7 +140,7 @@ module "alb" {
 module "app" {
 
 
-  depends_on = [module.alb , module.docdb , module.elasticache , module.rds , module.rabbitmq]
+ // depends_on = [module.alb , module.docdb , module.elasticache , module.rds , module.rabbitmq]
 
   source = "git::https://github.com/priyanshuprafful/tf-module-app.git"
 
