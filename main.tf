@@ -21,7 +21,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 
 }
- /*
+// /*
 module "docdb" {
 
   source = "git::https://github.com/priyanshuprafful/tf-module-docdb.git"
@@ -108,7 +108,7 @@ module "rabbitmq" {
 
 }
 
- */
+// */
 
 module "alb" {
   source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
@@ -140,7 +140,7 @@ module "alb" {
 module "app" {
 
 
-  //depends_on = [module.vpc , module.alb , module.docdb , module.elasticache , module.rds , module.rabbitmq]
+  depends_on = [module.vpc , module.alb , module.docdb , module.elasticache , module.rds , module.rabbitmq]
 
   source = "git::https://github.com/priyanshuprafful/tf-module-app.git"
 
