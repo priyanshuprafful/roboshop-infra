@@ -21,7 +21,15 @@ parameters = [
   {name = "prod.cart.catalogue_host", value = "catalogue-prod.saraldevops.site" , type = "String"},
   {name = "prod.cart.catalogue_port", value = "80" , type = "String"},
   {name = "prod.mysql.mysql_url" , value = "mysql-prod.saraldevops.site" , type = "String"},
-  {name = "prod.mongodb.mongodb_url" , value = "mongodb-prod.saraldevops.site" , type = "String"}
+  {name = "prod.mongodb.mongodb_url" , value = "mongodb-prod.saraldevops.site" , type = "String"},
+
+  {name = "prod.frontend.app_version" , value = "1.0.0" , type = "String"},
+  {name = "prod.catalogue.app_version" , value = "1.0.0" , type = "String"},
+  {name = "prod.user.app_version" , value = "1.0.0" , type = "String"},
+  {name = "prod.shipping.app_version" , value = "1.0.1" , type = "String"},
+  {name = "prod.payment.app_version" , value = "1.0.0" , type = "String"},
+  {name = "prod.cart.app_version" , value = "1.0.0" , type = "String"}
+
 
 ]
 
