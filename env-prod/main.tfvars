@@ -104,7 +104,7 @@ elasticache = {
 
 rabbitmq = {
   main = {
-    instance_type = "t3.small"
+    instance_type = "t3.medium"
     allow_subnets = "app"
 
   }
@@ -138,7 +138,7 @@ alb = {
 app = {
   catalogue = {
     component = "catalogue"
-    instance_type = "t3.small"
+    instance_type = "t3.medium"
     desired_capacity = 2
     max_size = 10
     min_size = 2
@@ -151,7 +151,7 @@ app = {
   }
   cart = {
     component = "cart"
-    instance_type = "t3.small"
+    instance_type = "t3.medium"
     desired_capacity = 2
     max_size = 10
     min_size = 2
@@ -164,7 +164,7 @@ app = {
   }
   user = {
     component = "user"
-    instance_type = "t3.small"
+    instance_type = "t3.medium"
     desired_capacity = 2
     max_size = 10
     min_size = 2
@@ -203,7 +203,7 @@ app = {
   }
   frontend = {
     component = "frontend"
-    instance_type = "t3.small"
+    instance_type = "t3.medium"
     desired_capacity = 2
     max_size = 10
     min_size = 2
