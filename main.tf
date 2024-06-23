@@ -21,7 +21,7 @@ module "vpc" {
   private_subnets = each.value["private_subnets"]
 
 }
-// /*
+/*
 module "docdb" {
 
   source = "git::https://github.com/priyanshuprafful/tf-module-docdb.git"
@@ -110,7 +110,7 @@ module "rabbitmq" {
 
 }
 
-// */
+
 
 module "alb" {
   source = "git::https://github.com/priyanshuprafful/tf-module-alb.git"
@@ -265,7 +265,7 @@ resource "null_resource" "load-gen" {
   }
 }
 
-*/
+
 
 
 
@@ -333,4 +333,30 @@ resource "null_resource" "load-gen" {
       "docker pull robotshop/rs-load"
     ]
   }
+}
+
+*/
+
+module "minikube" {
+  source = "github.com/scholzj/terraform-aws-minikube"
+
+  aws_region    = "eu-central-1"
+  cluster_name  = "my-minikube"
+  aws_instance_type = "t3.medium"
+  ssh_public_key = "~/.ssh/id_rsa.pub"
+  aws_subnet_id = lookup(local.subnet_ids , "public" , null )[0]
+ // ami_image_id = "ami-b81dbfc5"
+  hosted_zone = "saraldevops.site"
+  hosted_zone_private = false
+
+  tags = {
+    Name = "Minikube"
+  }
+
+  addons = [
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/storage-class.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/heapster.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/dashboard.yaml",
+    "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
+  ]
 }
