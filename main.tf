@@ -340,7 +340,7 @@ resource "null_resource" "load-gen" {
 module "minikube" {
   source = "github.com/scholzj/terraform-aws-minikube"
 
-  aws_region    = "eu-central-1"
+  aws_region    = "us-east-1"
   cluster_name  = "my-minikube"
   aws_instance_type = "t3.medium"
   ssh_public_key = "~/.ssh/id_rsa.pub"
