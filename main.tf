@@ -345,7 +345,7 @@ module "minikube" {
   aws_instance_type = "t3.medium"
   ssh_public_key = "~/.ssh/id_rsa.pub"
   aws_subnet_id = lookup(local.subnet_ids , "public", null)[0]
-  ami_image_id =  "ami-0b68b25d7fa1d99e0"  //"ami-b81dbfc5"
+  ami_image_id =  "ami-002070d43b0a4f171"  //"ami-b81dbfc5"
   hosted_zone = "saraldevops.site"
   hosted_zone_private = false
 
