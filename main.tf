@@ -360,3 +360,11 @@ module "minikube" {
     "https://raw.githubusercontent.com/scholzj/terraform-aws-minikube/master/addons/external-dns.yaml"
   ]
 }
+
+output "MINIKUBE_SERVER" {
+  value = "ssh centos@${module.minikube.public_ip}"
+}
+
+output "KUBE_CONFIG" {
+  value = "scp centos@${module.minikube.public_ip}:/home/centos/kubeconfig ~/.kube/config"
+}
