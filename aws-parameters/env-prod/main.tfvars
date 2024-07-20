@@ -8,7 +8,7 @@ parameters = [
   {name = "prod.user.mongo", value = "true" , type = "String"},
   {name = "prod.user.redis_host", value = "redis-prod.saraldevops.site" , type = "String"},
   {name = "prod.user.mongo_url", value = "mongodb://mongodb-prod.saraldevops.site:27017/users" , type = "String"},
-  {name = "prod.shipping.cart_endpoint", value = "cart-prod.saraldevops.site:80" , type = "String"},
+  {name = "prod.shipping.cart_endpoint", value = "cart:8080" , type = "String"},
   {name = "prod.shipping.db_host", value = "mysql-prod.saraldevops.site" , type = "String"},
   {name = "prod.payment.cart_host", value = "cart-prod.saraldevops.site" , type = "String"},
   {name = "prod.payment.cart_port", value = "80" , type = "String"},
